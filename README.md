@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Start JSON placeholder server
 
-## `npm i -g json-server`
-## `json-server --watch db.json`
+### `npm i -g json-server`
+### `json-server --watch db.json`
 
 ## Available Scripts
 
