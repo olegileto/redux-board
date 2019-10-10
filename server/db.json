@@ -1,0 +1,100 @@
+{
+  "lanes": [
+    {
+      "id": 1,
+      "title": "Planned Tasks",
+      "label": "20/70"
+    },
+    {
+      "id": 2,
+      "title": "Work In Progress (Not Droppable)",
+      "label": "10/20"
+    },
+    {
+      "id": 3,
+      "title": "Blocked",
+      "label": "0/0"
+    },
+    {
+      "id": 4,
+      "title": "Completed",
+      "label": "2/5"
+    },
+    {
+      "id": 5,
+      "title": "Repeat",
+      "label": "1/1"
+    },
+    {
+      "id": 6,
+      "title": "Archived",
+      "label": "1/1"
+    }
+  ],
+
+  "cards": [
+    {
+      "id": 1,
+      "title": "Buy milk",
+      "label": "15 mins",
+      "description": "2 Gallons of milk at the Deli store",
+      "laneId": 1
+    },
+    {
+      "id": 2,
+      "title": "Dispose Garbage",
+      "label": "10 mins",
+      "description": "Sort out recyclable and waste as needed",
+      "laneId": 1
+    },
+    {
+      "id": 3,
+      "title": "Write Blog",
+      "label": "30 mins",
+      "description": "Can AI make memes?",
+      "laneId": 1
+    },
+    {
+      "id": 4,
+      "title": "Pay Rent",
+      "label": "5 mins",
+      "description": "Transfer to bank account",
+      "laneId": 1
+    },
+    {
+      "id": 5,
+      "title": "Clean House",
+      "label": "30 mins",
+      "description": "Soap wash and polish floor. Polish windows and doors. Scrap all broken glasses",
+      "laneId": 2
+    },
+    {
+      "id": 6,
+      "title": "Practice Meditation",
+      "label": "15 mins",
+      "description": "Use Headspace app",
+      "laneId": 4
+    },
+    {
+      "id": 7,
+      "title": "Maintain Daily Journal",
+      "label": "15 mins",
+      "description": "Use Spreadsheet for now",
+      "laneId": 4
+    },
+    {
+      "id": 8,
+      "title": "Morning Jog",
+      "label": "30 mins",
+      "description": "Track using fitbit",
+      "laneId": 5
+    },
+    {
+      "id": 9,
+      "title": "Go Trekking",
+      "label": "300 mins",
+      "description": "Completed 10km on cycle",
+      "laneId": 6
+    }
+  ]
+}
