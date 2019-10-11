@@ -28,7 +28,23 @@ export default class Services {
 
     getAllCards = () => {
         return this.getApi(`/cards/`);
-    }
+    };
 
+    changeCardsLaneId = (laneId, cardObj) => {
+        return fetch(`${this._apiBase}/cards/${cardObj.id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ...cardObj,
+                "laneId": parseInt(laneId, 10)
+            })
+        })
+            .then((res) => {
+                return res.json()
+            })
+            .catch((err) => console.error(err))
+    };
 }
 

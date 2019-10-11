@@ -6,42 +6,74 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus} from '@fortawesome/free-solid-svg-icons'
 
 import Card from '../Card/Card';
-import {openModal} from '../../actions/index';
+import {openModal, changeCardLane} from '../../actions/index';
 
 class Lane extends Component {
 
+    componentDidUpdate(prevProps) {
+        if (this.props.dragEvent !== prevProps.dragEvent) {
+            this.props.fetchingCards();
+        }
+    }
+
+    onDragStart = (event, card) => {
+        event
+            .dataTransfer
+            .setData('text/plain', JSON.stringify(card));
+    };
+
+    onDragOver = (event) => {
+        event.preventDefault();
+    };
+
+    onDrop = (event) => {
+        const cardObj = event
+            .dataTransfer
+            .getData('text');
+        const dropZone = event.target;
+        const {changeCardLane} = this.props;
+
+        changeCardLane(dropZone.id, JSON.parse(cardObj));
+
+        event
+            .dataTransfer
+            .clearData();
+    };
+
     render() {
         const {cards, lane: {id, title}, openModal} = this.props;
+
         const filteredCards = cards.filter((card) => card.laneId === id);
+        const mapFilteredCards = filteredCards.map((card) => <Card card={card} key={card.id}
+                                                                   onDragStart={this.onDragStart}/>);
 
         return (
             <div className='lane card border-secondary'>
                 <div className='lane-header card-header flex-container'>
                     <h4 className='lane-title'>{title}</h4>
-                    <button className='add-btn' onClick={() => openModal()}><FontAwesomeIcon icon={faPlus}/></button>
+                    <button className='add-btn' onClick={() => openModal(id)}><FontAwesomeIcon icon={faPlus}/></button>
                     <span>{filteredCards.length}</span>
                 </div>
-                <div className='card-body-custom'>
-                    {
-                        filteredCards.map((card) => {
-                            return <Card card={card} key={card.id}/>
-                        })
-                    }
+                <div className='card-body-custom' id={id} onDragOver={(event) => this.onDragOver(event)}
+                     onDrop={(event) => this.onDrop(event)}>
+                    {mapFilteredCards}
                 </div>
             </div>
         )
     }
 }
 
-const mapStateToProps = ({cards: {cards}}) => {
+const mapStateToProps = ({cards: {cards, dragEvent}}) => {
     return {
-        cards: cards
+        cards,
+        dragEvent
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        openModal: bindActionCreators(openModal, dispatch)
+        openModal: bindActionCreators(openModal, dispatch),
+        changeCardLane: bindActionCreators(changeCardLane, dispatch),
     }
 };
 

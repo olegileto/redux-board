@@ -16,26 +16,26 @@ class LanesContainer extends Component {
         this.props.fetchingCards();
     }
 
+    handleCardsUpdate = () => {
+        this.props.fetchingCards();
+    };
+
     render() {
         const {lanes, modal, closeModal} = this.props;
 
+        const modalCondition = modal ? <Modal closeModal={closeModal}/> : null;
+        const mapLanes = lanes.map((lane) => <Lane key={lane.id} lane={lane} fetchingCards={this.handleCardsUpdate}/>);
+
         return (
             <div className='lanes-container'>
-                {
-                    lanes.map((lane) => {
-                        return <Lane key={lane.id} lane={lane}/>
-                    })
-                }
-
-                {
-                    modal ? <Modal closeModal={closeModal}/> : null
-                }
+                {mapLanes}
+                {modalCondition}
             </div>
         )
     }
 }
 
-const mapStateToProps = ({lanes:{lanes, modal}}) => {
+const mapStateToProps = ({lanes: {lanes, modal}}) => {
     return {
         lanes: lanes,
         modal: modal

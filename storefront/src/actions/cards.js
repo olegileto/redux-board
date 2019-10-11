@@ -1,4 +1,4 @@
-import {FETCH_CARDS, REQUESTED_CARDS, ERROR_CARDS} from './constants';
+import {FETCH_CARDS, REQUESTED_CARDS, ERROR_CARDS, CHANGE_CARD_LANE, FETCHING_LANES} from './constants';
 import Services from "../services/services";
 
 const services = new Services();
@@ -25,6 +25,20 @@ const fetchingCards = () => {
     }
 };
 
+const changeCardLane = (laneId, cardObj) => {
+    return (dispatch) => {
+        services.changeCardsLaneId(laneId, cardObj)
+            .then(() => {
+                dispatch({
+                    type: CHANGE_CARD_LANE,
+                    payload: true
+                });
+            })
+            .catch((err) => console.error(err))
+    }
+};
+
 export {
-    fetchingCards
+    fetchingCards,
+    changeCardLane
 }

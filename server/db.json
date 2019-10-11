@@ -31,79 +31,78 @@
       "label": "1/1"
     }
   ],
-
   "cards": [
     {
       "id": 1,
       "title": "Buy milk",
       "label": "15 mins",
       "description": "2 Gallons of milk at the Deli store",
-      "priority" : 4,
-      "laneId": 1
+      "priority": 2,
+      "laneId": 5
     },
     {
       "id": 2,
       "title": "Dispose Garbage",
       "label": "10 mins",
       "description": "Sort out recyclable and waste as needed",
-      "priority" : 2,
-      "laneId": 1
+      "priority": 4,
+      "laneId": 2
     },
     {
-      "id": 3,
-      "title": "Write Blog",
-      "label": "30 mins",
-      "description": "Can AI make memes?",
-      "priority" : 1,
-      "laneId": 1
-    },
-    {
-      "id": 4,
       "title": "Pay Rent",
       "label": "5 mins",
       "description": "Transfer to bank account",
-      "priority" : 4,
-      "laneId": 1
+      "priority": 4,
+      "laneId": 3,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "title": "Write Blog",
+      "label": "30 mins",
+      "description": "Can AI make memes?",
+      "priority": 3,
+      "laneId": 5
     },
     {
       "id": 5,
       "title": "Clean House",
       "label": "30 mins",
       "description": "Soap wash and polish floor. Polish windows and doors. Scrap all broken glasses",
-      "priority" : 3,
-      "laneId": 2
+      "priority": 3,
+      "laneId": 1
     },
     {
       "id": 6,
       "title": "Practice Meditation",
       "label": "15 mins",
       "description": "Use Headspace app",
-      "priority" : 2,
-      "laneId": 4
+      "priority": 2,
+      "laneId": 2
     },
     {
       "id": 7,
       "title": "Maintain Daily Journal",
       "label": "15 mins",
       "description": "Use Spreadsheet for now",
-      "priority" : 4,
-      "laneId": 4
+      "priority": 4,
+      "laneId": 6
     },
     {
       "id": 8,
       "title": "Morning Jog",
       "label": "30 mins",
       "description": "Track using fitbit",
-      "priority" : 3,
-      "laneId": 5
+      "priority": 3,
+      "laneId": 3
     },
     {
       "id": 9,
       "title": "Go Trekking",
       "label": "300 mins",
       "description": "Completed 10km on cycle",
-      "priority" : 2,
-      "laneId": 6
+      "priority": 2,
+      "laneId": 8
     }
   ]
 }

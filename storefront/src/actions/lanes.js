@@ -25,7 +25,8 @@ const fetchingLanes = () => {
     }
 };
 
-const openModal = () => {
+const openModal = (laneId) => {
+    console.log(laneId, 'lane id');
     return {
         type: OPEN_MODAL
     }
