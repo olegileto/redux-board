@@ -38,6 +38,7 @@
       "title": "Buy milk",
       "label": "15 mins",
       "description": "2 Gallons of milk at the Deli store",
+      "priority" : 4,
       "laneId": 1
     },
     {
@@ -45,6 +46,7 @@
       "title": "Dispose Garbage",
       "label": "10 mins",
       "description": "Sort out recyclable and waste as needed",
+      "priority" : 2,
       "laneId": 1
     },
     {
@@ -52,6 +54,7 @@
       "title": "Write Blog",
       "label": "30 mins",
       "description": "Can AI make memes?",
+      "priority" : 1,
       "laneId": 1
     },
     {
@@ -59,6 +62,7 @@
       "title": "Pay Rent",
       "label": "5 mins",
       "description": "Transfer to bank account",
+      "priority" : 4,
       "laneId": 1
     },
     {
@@ -66,6 +70,7 @@
       "title": "Clean House",
       "label": "30 mins",
       "description": "Soap wash and polish floor. Polish windows and doors. Scrap all broken glasses",
+      "priority" : 3,
       "laneId": 2
     },
     {
@@ -73,6 +78,7 @@
       "title": "Practice Meditation",
       "label": "15 mins",
       "description": "Use Headspace app",
+      "priority" : 2,
       "laneId": 4
     },
     {
@@ -80,6 +86,7 @@
       "title": "Maintain Daily Journal",
       "label": "15 mins",
       "description": "Use Spreadsheet for now",
+      "priority" : 4,
       "laneId": 4
     },
     {
@@ -87,6 +94,7 @@
       "title": "Morning Jog",
       "label": "30 mins",
       "description": "Track using fitbit",
+      "priority" : 3,
       "laneId": 5
     },
     {
@@ -94,6 +102,7 @@
       "title": "Go Trekking",
       "label": "300 mins",
       "description": "Completed 10km on cycle",
+      "priority" : 2,
       "laneId": 6
     }
   ]

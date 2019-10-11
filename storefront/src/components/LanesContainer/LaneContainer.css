@@ -1,0 +1,55 @@
+.lane {
+    width: 300px;
+    height: auto;
+}
+
+.lanes-container {
+    width: 97%;
+    margin: 0 auto;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lane-header {
+    height: 50px;
+}
+
+h4.lane-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 80%;
+    height: 100%;
+    white-space: nowrap;
+}
+
+.card-buttons {
+    text-align: right;
+}
+
+.lane button {
+    background: none;
+    border: none;
+    outline: none;
+    transition: opacity .3s;
+}
+
+.lane .lane-header button {
+    color: #fff;
+}
+
+.lane button:hover {
+    opacity: .7;
+}
+
+.card-custom {
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.card-body-custom {
+    padding: 10px;
+}

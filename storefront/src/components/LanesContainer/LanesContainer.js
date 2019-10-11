@@ -6,6 +6,8 @@ import {fetchingLanes, fetchingCards} from '../../actions';
 
 import Lane from '../Lane/Lane';
 
+import './LaneContainer.css';
+
 class LanesContainer extends Component {
 
     componentDidMount() {
