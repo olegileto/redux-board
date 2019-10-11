@@ -1,0 +1,19 @@
+.modal-background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.modal-background .modal-custom {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    position: static;
+}
+
+.modal-background .form-group-custom {
+    width: 100%;
+}

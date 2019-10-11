@@ -2,12 +2,12 @@ import React from 'react';
 
 import './App.css';
 
-import ListsContainer from "../LanesContainer/LanesContainer";
+import LanesContainer from "../LanesContainer/LanesContainer";
 
 function App() {
     return (
         <div className="app">
-            <ListsContainer/>
+            <LanesContainer/>
         </div>
     );
 }

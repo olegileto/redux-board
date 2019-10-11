@@ -1,4 +1,4 @@
-import {FETCHING_LANES, REQUESTED_LANES, ERROR_LANES} from './constants';
+import {FETCHING_LANES, REQUESTED_LANES, ERROR_LANES, OPEN_MODAL, CLOSE_MODAL} from './constants';
 import Services from "../services/services";
 
 const services = new Services();
@@ -25,6 +25,20 @@ const fetchingLanes = () => {
     }
 };
 
+const openModal = () => {
+    return {
+        type: OPEN_MODAL
+    }
+};
+
+const closeModal = () => {
+    return {
+        type: CLOSE_MODAL
+    }
+};
+
 export {
-    fetchingLanes
+    fetchingLanes,
+    openModal,
+    closeModal
 }

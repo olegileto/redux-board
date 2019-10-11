@@ -1,9 +1,10 @@
-import {FETCHING_LANES, REQUESTED_LANES, ERROR_LANES} from '../actions/constants';
+import {FETCHING_LANES, REQUESTED_LANES, ERROR_LANES, OPEN_MODAL, CLOSE_MODAL} from '../actions/constants';
 
 const initialState = {
     lanes: [],
     isLoading: false,
-    error: false
+    error: false,
+    modal: false
 };
 
 const lanes = (state = initialState, action) => {
@@ -16,6 +17,12 @@ const lanes = (state = initialState, action) => {
 
         case ERROR_LANES:
             return {...state, error: true};
+
+        case OPEN_MODAL:
+            return {...state, modal: true};
+
+        case CLOSE_MODAL:
+            return {...state, modal: false};
 
         default:
             return state;

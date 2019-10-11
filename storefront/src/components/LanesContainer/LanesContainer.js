@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 
-import {fetchingLanes, fetchingCards} from '../../actions';
+import {fetchingLanes, fetchingCards, closeModal} from '../../actions';
 
 import Lane from '../Lane/Lane';
+import Modal from "../Modal/Modal";
 
 import './LaneContainer.css';
 
@@ -16,7 +17,7 @@ class LanesContainer extends Component {
     }
 
     render() {
-        const {lanes} = this.props;
+        const {lanes, modal, closeModal} = this.props;
 
         return (
             <div className='lanes-container'>
@@ -25,21 +26,27 @@ class LanesContainer extends Component {
                         return <Lane key={lane.id} lane={lane}/>
                     })
                 }
+
+                {
+                    modal ? <Modal closeModal={closeModal}/> : null
+                }
             </div>
         )
     }
 }
 
-const mapStateToProps = ({lanes}) => {
+const mapStateToProps = ({lanes:{lanes, modal}}) => {
     return {
-        lanes: lanes.lanes,
+        lanes: lanes,
+        modal: modal
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchingLanes: bindActionCreators(fetchingLanes, dispatch),
-        fetchingCards: bindActionCreators(fetchingCards, dispatch)
+        fetchingCards: bindActionCreators(fetchingCards, dispatch),
+        closeModal: bindActionCreators(closeModal, dispatch)
     }
 };
 
