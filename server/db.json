@@ -38,7 +38,7 @@
       "label": "15 mins",
       "description": "2 Gallons of milk at the Deli store",
       "priority": 2,
-      "laneId": 5
+      "laneId": 4
     },
     {
       "id": 2,
@@ -46,14 +46,14 @@
       "label": "10 mins",
       "description": "Sort out recyclable and waste as needed",
       "priority": 4,
-      "laneId": 2
+      "laneId": 4
     },
     {
       "title": "Pay Rent",
       "label": "5 mins",
       "description": "Transfer to bank account",
       "priority": 4,
-      "laneId": 3,
+      "laneId": 6,
       "id": 3
     },
     {
@@ -62,7 +62,7 @@
       "label": "30 mins",
       "description": "Can AI make memes?",
       "priority": 3,
-      "laneId": 5
+      "laneId": 3
     },
     {
       "id": 5,
@@ -78,7 +78,7 @@
       "label": "15 mins",
       "description": "Use Headspace app",
       "priority": 2,
-      "laneId": 2
+      "laneId": 3
     },
     {
       "id": 7,
@@ -94,7 +94,7 @@
       "label": "30 mins",
       "description": "Track using fitbit",
       "priority": 3,
-      "laneId": 3
+      "laneId": 5
     },
     {
       "id": 9,
@@ -102,7 +102,7 @@
       "label": "300 mins",
       "description": "Completed 10km on cycle",
       "priority": 2,
-      "laneId": 8
+      "laneId": 1
     }
   ]
 }
