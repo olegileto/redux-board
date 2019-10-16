@@ -7,6 +7,16 @@ const Modal = ({addNewCard, laneId}) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState(1);
+    const [validation, setValidation] = useState(false);
+
+    const handleSubmitEvent = (e) => {
+        if (title !== '' && description !== '') {
+            addNewCard({title, description, priority, laneId})
+        } else {
+            setValidation(true);
+            e.preventDefault();
+        }
+    };
 
     return (
         <div className='modal-background'>
@@ -15,6 +25,12 @@ const Modal = ({addNewCard, laneId}) => {
                     <div className="modal-content">
                         <div className="modal-body">
                             <div className="form-group">
+
+                                <div
+                                    className={!validation ? 'hidden' : 'alert alert-dismissible alert-danger'}>
+                                    <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                </div>
+
                                 <label className="col-form-label" htmlFor="inputDefault">Task title</label>
                                 <input
                                     type="text"
@@ -52,7 +68,7 @@ const Modal = ({addNewCard, laneId}) => {
                         </div>
                         <div className="modal-footer">
                             <Link to='/' className="btn btn-primary"
-                                  onClick={() => addNewCard({title, description, priority, laneId})}>Add card</Link>
+                                  onClick={handleSubmitEvent}>Add card</Link>
                             <Link to='/' className="btn btn-secondary" data-dismiss="modal">Close</Link>
                         </div>
                     </div>

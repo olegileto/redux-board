@@ -55,6 +55,16 @@ export default class Services {
                 return res.json()
             })
             .catch((err) => console.error(err));
+    };
+
+    deleteCardById = (cardObj) => {
+        return fetch(`${this._apiBase}/cards/${cardObj}`, {
+            method: 'DELETE',
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .catch((err) => console.error(err))
     }
 }
 

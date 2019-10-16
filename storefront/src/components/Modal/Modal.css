@@ -17,3 +17,7 @@
 .modal-background .form-group-custom {
     width: 100%;
 }
+
+.hidden {
+    display: none;
+}

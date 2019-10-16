@@ -3,7 +3,8 @@ import {
     REQUESTED_CARDS,
     ERROR_CARDS,
     CHANGE_CARD_LANE,
-    ADD_NEW_CARD
+    ADD_NEW_CARD,
+    DELETE_CARD
 } from '../actions/constants';
 
 const initialState = {
@@ -28,6 +29,9 @@ const cards = (state = initialState, action) => {
             return {...state, dragEvent: action.payload};
 
         case ADD_NEW_CARD:
+            return {...state, cards: action.payload, isLoading: false, dragEvent: false};
+
+        case DELETE_CARD:
             return {...state, cards: action.payload, isLoading: false, dragEvent: false};
 
         default:

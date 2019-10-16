@@ -4,7 +4,8 @@ import {
     ERROR_CARDS,
     CHANGE_CARD_LANE,
     ADD_NEW_CARD,
-    ERROR_NEW_CARD
+    ERROR_NEW_CARD,
+    DELETE_CARD
 } from './constants';
 import Services from "../services/services";
 
@@ -70,8 +71,30 @@ const addNewCard = (cardObj) => {
     }
 };
 
+const deleteCardById = (cardObj) => {
+    console.log(cardObj);
+    return (dispatch) => {
+        dispatch({
+            type: REQUESTED_CARDS
+        });
+
+        services.deleteCardById(cardObj)
+            .then(() => {
+                return services.getAllCards()
+            })
+            .then((cards) => {
+                dispatch({
+                    type: DELETE_CARD,
+                    payload: cards
+                })
+            })
+            .catch((err) => console.error(err));
+    }
+};
+
 export {
     fetchingCards,
     changeCardLane,
-    addNewCard
+    addNewCard,
+    deleteCardById
 }

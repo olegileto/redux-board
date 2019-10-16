@@ -1,9 +1,10 @@
 import {fetchingLanes} from "./lanes";
-import {fetchingCards, changeCardLane, addNewCard} from './cards';
+import {fetchingCards, changeCardLane, addNewCard, deleteCardById} from './cards';
 
 export {
     fetchingLanes,
     fetchingCards,
     changeCardLane,
-    addNewCard
+    addNewCard,
+    deleteCardById
 }

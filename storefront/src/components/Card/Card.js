@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEdit, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 
-const Card = ({card, onDragStart}) => {
+const Card = ({card, onDragStart, deleteCardById}) => {
     const [priority] = useState({1: 'table-light', 2: 'table-success', 3: 'table-warning', 4: 'table-danger'});
 
     return (
@@ -18,7 +18,7 @@ const Card = ({card, onDragStart}) => {
 
             <div className='card-buttons'>
                 <button className='edit-btn'><FontAwesomeIcon icon={faEdit}/></button>
-                <button className='delete-btn'><FontAwesomeIcon icon={faTrashAlt}/></button>
+                <button className='delete-btn' onClick={() => deleteCardById(card.id)}><FontAwesomeIcon icon={faTrashAlt}/></button>
             </div>
 
         </div>

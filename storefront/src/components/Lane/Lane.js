@@ -7,7 +7,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus} from '@fortawesome/free-solid-svg-icons'
 
 import Card from '../Card/Card';
-import {changeCardLane} from '../../actions/index';
+import {changeCardLane, deleteCardById} from '../../actions/index';
 
 class Lane extends Component {
 
@@ -42,12 +42,13 @@ class Lane extends Component {
     };
 
     render() {
-        const {cards, lane: {id, title}} = this.props;
+        const {cards, lane: {id, title}, deleteCardById} = this.props;
 
         const filteredCards = cards.filter((card) => card.laneId === id);
         const mapFilteredCards = filteredCards.map((card) =>
             <Card card={card} key={card.id}
                   onDragStart={this.onDragStart}
+                  deleteCardById={deleteCardById}
             />);
 
         return (
@@ -78,6 +79,7 @@ const mapStateToProps = ({cards: {cards, dragEvent}}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         changeCardLane: bindActionCreators(changeCardLane, dispatch),
+        deleteCardById: bindActionCreators(deleteCardById, dispatch)
     }
 };
 

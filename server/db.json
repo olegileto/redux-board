@@ -33,14 +33,6 @@
   ],
   "cards": [
     {
-      "id": 1,
-      "title": "Buy milk",
-      "label": "15 mins",
-      "description": "2 Gallons of milk at the Deli store",
-      "priority": 2,
-      "laneId": 9
-    },
-    {
       "id": 2,
       "title": "Dispose Garbage",
       "label": "10 mins",
@@ -105,17 +97,10 @@
       "laneId": 1
     },
     {
-      "title": "123123",
-      "description": "123123213",
-      "priority": "3",
-      "laneId": 2,
-      "id": 10
-    },
-    {
       "title": "Take a picture",
       "description": "Something should be here. But I have nothing ",
       "priority": "4",
-      "laneId": 2,
+      "laneId": 5,
       "id": 11
     }
   ]
