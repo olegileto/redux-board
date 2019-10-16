@@ -22,10 +22,6 @@ export default class Services {
 
     };
 
-    gerCardsByLane = (laneId) => {
-        return this.getApi(`/cards?laneId=${laneId}`);
-    };
-
     getAllCards = () => {
         return this.getApi(`/cards/`);
     };
@@ -46,5 +42,19 @@ export default class Services {
             })
             .catch((err) => console.error(err))
     };
+
+    addNewCard = (cardObj) => {
+        return fetch(`${this._apiBase}/cards`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cardObj)
+        })
+            .then((res) => {
+                return res.json()
+            })
+            .catch((err) => console.error(err));
+    }
 }
 

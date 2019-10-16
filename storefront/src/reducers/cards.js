@@ -1,4 +1,10 @@
-import {FETCH_CARDS, REQUESTED_CARDS, ERROR_CARDS, CHANGE_CARD_LANE} from '../actions/constants';
+import {
+    FETCH_CARDS,
+    REQUESTED_CARDS,
+    ERROR_CARDS,
+    CHANGE_CARD_LANE,
+    ADD_NEW_CARD
+} from '../actions/constants';
 
 const initialState = {
     cards: [],
@@ -20,6 +26,9 @@ const cards = (state = initialState, action) => {
 
         case CHANGE_CARD_LANE:
             return {...state, dragEvent: action.payload};
+
+        case ADD_NEW_CARD:
+            return {...state, cards: action.payload, isLoading: false, dragEvent: false};
 
         default:
             return state;

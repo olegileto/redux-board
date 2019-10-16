@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 
-import {fetchingLanes, fetchingCards, closeModal} from '../../actions';
+import {fetchingLanes, fetchingCards} from '../../actions';
 
 import Lane from '../Lane/Lane';
-import Modal from "../Modal/Modal";
 
 import './LaneContainer.css';
 
@@ -21,24 +20,25 @@ class LanesContainer extends Component {
     };
 
     render() {
-        const {lanes, modal, closeModal} = this.props;
+        const {lanes} = this.props;
 
-        const modalCondition = modal ? <Modal closeModal={closeModal}/> : null;
-        const mapLanes = lanes.map((lane) => <Lane key={lane.id} lane={lane} fetchingCards={this.handleCardsUpdate}/>);
+        const mapLanes = lanes.map((lane) =>
+            <Lane
+                key={lane.id}
+                lane={lane}
+                fetchingCards={this.handleCardsUpdate}/>);
 
         return (
             <div className='lanes-container'>
                 {mapLanes}
-                {modalCondition}
             </div>
         )
     }
 }
 
-const mapStateToProps = ({lanes: {lanes, modal}}) => {
+const mapStateToProps = ({lanes: {lanes}}) => {
     return {
         lanes: lanes,
-        modal: modal
     }
 };
 
@@ -46,7 +46,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchingLanes: bindActionCreators(fetchingLanes, dispatch),
         fetchingCards: bindActionCreators(fetchingCards, dispatch),
-        closeModal: bindActionCreators(closeModal, dispatch)
     }
 };
 

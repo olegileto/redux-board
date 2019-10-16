@@ -1,10 +1,9 @@
-import {fetchingLanes, openModal, closeModal} from "./lanes";
-import {fetchingCards, changeCardLane} from './cards';
+import {fetchingLanes} from "./lanes";
+import {fetchingCards, changeCardLane, addNewCard} from './cards';
 
 export {
     fetchingLanes,
-    openModal,
-    closeModal,
     fetchingCards,
-    changeCardLane
+    changeCardLane,
+    addNewCard
 }

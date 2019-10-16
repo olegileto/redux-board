@@ -4,8 +4,8 @@ import lanes from "./lanes";
 import cards from "./cards";
 
 const rootReducer = combineReducers({
-    lanes: lanes,
-    cards: cards
+    lanes,
+    cards
 });
 
 export default rootReducer;

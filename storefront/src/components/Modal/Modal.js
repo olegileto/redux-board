@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Link} from "react-router-dom";
 
 import './Modal.css';
 
-const Modal = ({closeModal}) => {
+const Modal = ({addNewCard, laneId}) => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [priority, setPriority] = useState(1);
+
     return (
         <div className='modal-background'>
             <div className="modal modal-custom">
@@ -11,14 +16,33 @@ const Modal = ({closeModal}) => {
                         <div className="modal-body">
                             <div className="form-group">
                                 <label className="col-form-label" htmlFor="inputDefault">Task title</label>
-                                <input type="text" className="form-control" placeholder="Enter title"
-                                       id="inputDefault"/>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Enter title"
+                                    id="inputDefault"
+                                    onChange={(e) => {
+                                        setTitle(e.target.value)
+                                    }}/>
 
                                 <label htmlFor="exampleTextarea">Task description </label>
-                                <textarea className="form-control" id="exampleTextarea" rows="3"/>
+                                <textarea
+                                    value={description}
+                                    className="form-control"
+                                    id="exampleTextarea"
+                                    rows="3"
+                                    onChange={(e) => {
+                                        setDescription(e.target.value)
+                                    }}/>
 
                                 <label htmlFor="exampleSelect2">Task priority</label>
-                                <select multiple="" className="form-control" id="exampleSelect2">
+                                <select
+                                    value={priority}
+                                    className="form-control"
+                                    id="exampleSelect2"
+                                    onChange={(e) => {
+                                        setPriority(e.target.value)
+                                    }}>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -27,8 +51,9 @@ const Modal = ({closeModal}) => {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary">Add card</button>
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => closeModal()}>Close</button>
+                            <Link to='/' className="btn btn-primary"
+                                  onClick={() => addNewCard({title, description, priority, laneId})}>Add card</Link>
+                            <Link to='/' className="btn btn-secondary" data-dismiss="modal">Close</Link>
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
+import {Link} from "react-router-dom";
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus} from '@fortawesome/free-solid-svg-icons'
 
 import Card from '../Card/Card';
-import {openModal, changeCardLane} from '../../actions/index';
+import {changeCardLane} from '../../actions/index';
 
 class Lane extends Component {
 
@@ -41,21 +42,25 @@ class Lane extends Component {
     };
 
     render() {
-        const {cards, lane: {id, title}, openModal} = this.props;
+        const {cards, lane: {id, title}} = this.props;
 
         const filteredCards = cards.filter((card) => card.laneId === id);
-        const mapFilteredCards = filteredCards.map((card) => <Card card={card} key={card.id}
-                                                                   onDragStart={this.onDragStart}/>);
+        const mapFilteredCards = filteredCards.map((card) =>
+            <Card card={card} key={card.id}
+                  onDragStart={this.onDragStart}
+            />);
 
         return (
             <div className='lane card border-secondary'>
                 <div className='lane-header card-header flex-container'>
                     <h4 className='lane-title'>{title}</h4>
-                    <button className='add-btn' onClick={() => openModal(id)}><FontAwesomeIcon icon={faPlus}/></button>
+                    <Link to={`/add-new-card/${id}`} className='add-btn'><FontAwesomeIcon icon={faPlus}/></Link>
                     <span>{filteredCards.length}</span>
                 </div>
+
                 <div className='card-body-custom' id={id} onDragOver={(event) => this.onDragOver(event)}
                      onDrop={(event) => this.onDrop(event)}>
+                    <div className='over-block'/>
                     {mapFilteredCards}
                 </div>
             </div>
@@ -72,7 +77,6 @@ const mapStateToProps = ({cards: {cards, dragEvent}}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        openModal: bindActionCreators(openModal, dispatch),
         changeCardLane: bindActionCreators(changeCardLane, dispatch),
     }
 };

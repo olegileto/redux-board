@@ -1,4 +1,11 @@
-import {FETCH_CARDS, REQUESTED_CARDS, ERROR_CARDS, CHANGE_CARD_LANE, FETCHING_LANES} from './constants';
+import {
+    FETCH_CARDS,
+    REQUESTED_CARDS,
+    ERROR_CARDS,
+    CHANGE_CARD_LANE,
+    ADD_NEW_CARD,
+    ERROR_NEW_CARD
+} from './constants';
 import Services from "../services/services";
 
 const services = new Services();
@@ -38,7 +45,33 @@ const changeCardLane = (laneId, cardObj) => {
     }
 };
 
+const addNewCard = (cardObj) => {
+    return (dispatch) => {
+        dispatch({
+            type: REQUESTED_CARDS
+        });
+
+        services.addNewCard(cardObj)
+            .then(() => {
+                return services.getAllCards()
+            })
+            .then((cards) => {
+                dispatch({
+                    type: ADD_NEW_CARD,
+                    payload: cards
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: ERROR_NEW_CARD,
+                    payload: err
+                })
+            })
+    }
+};
+
 export {
     fetchingCards,
-    changeCardLane
+    changeCardLane,
+    addNewCard
 }
