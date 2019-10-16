@@ -68,8 +68,6 @@ export default class Services {
     };
 
     editCardById = (cardObj) => {
-        console.log(cardObj);
-        console.log(cardObj.id);
         return fetch(`${this._apiBase}/cards/${cardObj.id}`, {
             method: 'PUT',
             headers: {
@@ -77,7 +75,6 @@ export default class Services {
             },
             body: JSON.stringify(cardObj)
         })
-
             .then((res) => {
                 return res.json();
             })

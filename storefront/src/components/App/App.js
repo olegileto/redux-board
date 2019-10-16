@@ -29,12 +29,15 @@ class App extends Component {
                             path='/edit-card/:laneId/:cardId'
                             render={(({match}) => {
                                 const {cardId, laneId} = match.params;
+                                const cardObj = cards.filter((card) => card.id === parseInt(cardId, 10));
+
+                                console.log(cardObj);
 
                                 return <EditForm
                                     id={parseInt(cardId, 10)}
                                     laneId={parseInt(laneId, 10)}
                                     editCardById={editCardById}
-                                    card={cards}/>
+                                    card={cardObj[0]}/>
                             })}
                         />
 

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
-const EditForm = ({id, editCardById, laneId, cards}) => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [priority, setPriority] = useState(1);
+const EditForm = ({id, editCardById, laneId, card}) => {
+    const [title, setTitle] = useState(card.title);
+    const [description, setDescription] = useState(card.description);
+    const [priority, setPriority] = useState(card.priority);
 
     const handleSubmitEvent = (e) => {
         if (title !== '' && description !== '') {
@@ -36,6 +36,7 @@ const EditForm = ({id, editCardById, laneId, cards}) => {
 
                                 <label htmlFor="exampleTextarea">Task description </label>
                                 <textarea
+                                    value={description}
                                     className="form-control"
                                     id="exampleTextarea"
                                     rows="3"
