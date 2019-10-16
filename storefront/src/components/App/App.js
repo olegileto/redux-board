@@ -7,12 +7,13 @@ import './App.css';
 
 import LanesContainer from "../LanesContainer/LanesContainer";
 import Modal from "../Modal/Modal";
+import EditForm from "../Card/EditForm";
 
-import {addNewCard} from "../../actions";
+import {addNewCard, editCardById} from "../../actions";
 
 class App extends Component {
     render() {
-        const {addNewCard} = this.props;
+        const {addNewCard, editCardById, cards} = this.props;
 
         return (
             <BrowserRouter>
@@ -25,11 +26,24 @@ class App extends Component {
                         />
 
                         <Route
+                            path='/edit-card/:laneId/:cardId'
+                            render={(({match}) => {
+                                const {cardId, laneId} = match.params;
+
+                                return <EditForm
+                                    id={parseInt(cardId, 10)}
+                                    laneId={parseInt(laneId, 10)}
+                                    editCardById={editCardById}
+                                    card={cards}/>
+                            })}
+                        />
+
+                        <Route
                             path='/add-new-card/:laneId'
                             render={(({match}) => {
-                                const laneId = match.params;
+                                const {laneId} = match.params;
 
-                                return <Modal laneId={parseInt(laneId.laneId, 10)} addNewCard={addNewCard}/>
+                                return <Modal laneId={parseInt(laneId, 10)} addNewCard={addNewCard}/>
                             })}
                         />
                     </Switch>
@@ -39,10 +53,17 @@ class App extends Component {
     }
 }
 
+const mapStateToProps = ({cards: {cards}}) => {
+    return {
+        cards
+    };
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewCard: bindActionCreators(addNewCard, dispatch)
+        addNewCard: bindActionCreators(addNewCard, dispatch),
+        editCardById: bindActionCreators(editCardById, dispatch)
     }
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

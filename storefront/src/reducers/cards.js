@@ -1,10 +1,13 @@
 import {
-    FETCH_CARDS,
+    FETCH_ALL_CARDS,
     REQUESTED_CARDS,
     ERROR_CARDS,
     CHANGE_CARD_LANE,
     ADD_NEW_CARD,
-    DELETE_CARD
+    DELETE_CARD,
+    EDIT_CARD,
+    REQUESTED_EDIT_CARDS,
+    REQUESTED_ALL_CARDS
 } from '../actions/constants';
 
 const initialState = {
@@ -15,11 +18,19 @@ const initialState = {
 };
 
 const cards = (state = initialState, action) => {
+    const fetchData = {...state, cards: action.payload, isLoading: false, dragEvent: false};
+
     switch (action.type) {
-        case FETCH_CARDS:
-            return {...state, cards: action.payload, isLoading: false, dragEvent: false};
+        case FETCH_ALL_CARDS:
+            return fetchData;
+
+        case REQUESTED_ALL_CARDS:
+            return {...state, isLoading: true};
 
         case REQUESTED_CARDS:
+            return {...state, isLoading: true};
+
+        case REQUESTED_EDIT_CARDS:
             return {...state, isLoading: true};
 
         case ERROR_CARDS:
@@ -29,10 +40,13 @@ const cards = (state = initialState, action) => {
             return {...state, dragEvent: action.payload};
 
         case ADD_NEW_CARD:
-            return {...state, cards: action.payload, isLoading: false, dragEvent: false};
+            return fetchData;
 
         case DELETE_CARD:
-            return {...state, cards: action.payload, isLoading: false, dragEvent: false};
+            return fetchData;
+
+        case EDIT_CARD:
+            return fetchData;
 
         default:
             return state;

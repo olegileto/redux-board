@@ -59,11 +59,29 @@ export default class Services {
 
     deleteCardById = (cardObj) => {
         return fetch(`${this._apiBase}/cards/${cardObj}`, {
-            method: 'DELETE',
+            method: 'DELETE'
         })
             .then((res) => {
                 return res.json();
             })
+            .catch((err) => console.error(err))
+    };
+
+    editCardById = (cardObj) => {
+        console.log(cardObj);
+        console.log(cardObj.id);
+        return fetch(`${this._apiBase}/cards/${cardObj.id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cardObj)
+        })
+
+            .then((res) => {
+                return res.json();
+            })
+
             .catch((err) => console.error(err))
     }
 }

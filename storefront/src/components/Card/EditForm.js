@@ -1,19 +1,15 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
-import './Modal.css';
-
-const Modal = ({addNewCard, laneId}) => {
+const EditForm = ({id, editCardById, laneId, cards}) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState(1);
-    const [validation, setValidation] = useState(false);
 
     const handleSubmitEvent = (e) => {
         if (title !== '' && description !== '') {
-            addNewCard({title, description, priority, laneId})
+            editCardById({title, description, priority, id, laneId})
         } else {
-            setValidation(true);
             e.preventDefault();
         }
     };
@@ -26,11 +22,6 @@ const Modal = ({addNewCard, laneId}) => {
                         <div className="modal-body">
                             <div className="form-group">
 
-                                <div
-                                    className={!validation ? 'hidden' : 'alert alert-dismissible alert-danger'}>
-                                    <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                                </div>
-
                                 <label className="col-form-label" htmlFor="inputDefault">Task title</label>
                                 <input
                                     value={title}
@@ -40,11 +31,11 @@ const Modal = ({addNewCard, laneId}) => {
                                     id="inputDefault"
                                     onChange={(e) => {
                                         setTitle(e.target.value)
-                                    }}/>
+                                    }}
+                                />
 
                                 <label htmlFor="exampleTextarea">Task description </label>
                                 <textarea
-                                    value={description}
                                     className="form-control"
                                     id="exampleTextarea"
                                     rows="3"
@@ -68,8 +59,7 @@ const Modal = ({addNewCard, laneId}) => {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <Link to='/' className="btn btn-primary"
-                                  onClick={handleSubmitEvent}>Add card</Link>
+                            <Link to='/' className="btn btn-primary" onClick={handleSubmitEvent}>Edit card</Link>
                             <Link to='/' className="btn btn-secondary" data-dismiss="modal">Close</Link>
                         </div>
                     </div>
@@ -79,4 +69,4 @@ const Modal = ({addNewCard, laneId}) => {
     )
 };
 
-export default Modal;
+export default EditForm;

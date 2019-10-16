@@ -1,11 +1,14 @@
 import {
-    FETCH_CARDS,
+    FETCH_ALL_CARDS,
     REQUESTED_CARDS,
     ERROR_CARDS,
     CHANGE_CARD_LANE,
     ADD_NEW_CARD,
     ERROR_NEW_CARD,
-    DELETE_CARD
+    DELETE_CARD,
+    EDIT_CARD,
+    REQUESTED_EDIT_CARDS,
+    REQUESTED_ALL_CARDS
 } from './constants';
 import Services from "../services/services";
 
@@ -14,13 +17,13 @@ const services = new Services();
 const fetchingCards = () => {
     return (dispatch) => {
         dispatch({
-            type: REQUESTED_CARDS
+            type: REQUESTED_ALL_CARDS
         });
 
         services.getAllCards()
             .then((cards) => {
                 dispatch({
-                    type: FETCH_CARDS,
+                    type: FETCH_ALL_CARDS,
                     payload: cards
                 })
             })
@@ -72,7 +75,6 @@ const addNewCard = (cardObj) => {
 };
 
 const deleteCardById = (cardObj) => {
-    console.log(cardObj);
     return (dispatch) => {
         dispatch({
             type: REQUESTED_CARDS
@@ -92,9 +94,30 @@ const deleteCardById = (cardObj) => {
     }
 };
 
+const editCardById = (cardObj) => {
+    return (dispatch) => {
+        dispatch({
+            type: REQUESTED_EDIT_CARDS
+        });
+
+        services.editCardById(cardObj)
+            .then(() => {
+                return services.getAllCards()
+            })
+            .then((cards) => {
+                dispatch({
+                    type: EDIT_CARD,
+                    payload: cards
+                })
+            })
+            .catch((err) => console.error(err));
+    }
+};
+
 export {
     fetchingCards,
     changeCardLane,
     addNewCard,
-    deleteCardById
+    deleteCardById,
+    editCardById
 }
