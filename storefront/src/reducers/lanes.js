@@ -1,4 +1,4 @@
-import {FETCHING_LANES, REQUESTED_LANES, ERROR_LANES} from '../actions/constants';
+import {FETCH_ALL_LANES_SUCCESS, FETCH_ALL_LANES_REQUEST, FETCH_ALL_LANES_ERROR} from '../actions/constants';
 
 const initialState = {
     lanes: [],
@@ -9,13 +9,13 @@ const initialState = {
 
 const lanes = (state = initialState, action) => {
     switch (action.type) {
-        case REQUESTED_LANES:
+        case FETCH_ALL_LANES_REQUEST:
             return {...state, isLoading: true};
 
-        case FETCHING_LANES:
+        case FETCH_ALL_LANES_SUCCESS:
             return {...state, lanes: action.payload, isLoading: false};
 
-        case ERROR_LANES:
+        case FETCH_ALL_LANES_ERROR:
             return {...state, error: true};
 
         default:

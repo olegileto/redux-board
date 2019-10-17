@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
-const EditForm = ({id, editCardById, laneId, card}) => {
+const EditForm = ({id, editCard, laneId, card}) => {
     const [title, setTitle] = useState(card.title);
     const [description, setDescription] = useState(card.description);
     const [priority, setPriority] = useState(card.priority);
 
     const handleSubmitEvent = (e) => {
         if (title !== '' && description !== '') {
-            editCardById({title, description, priority, id, laneId})
+            editCard({title, description, priority, id, laneId})
         } else {
             e.preventDefault();
         }

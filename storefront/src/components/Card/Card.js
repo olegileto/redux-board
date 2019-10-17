@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEdit, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 
-const Card = ({card, onDragStart, deleteCardById}) => {
+const Card = ({card, onDragStart, deleteCard}) => {
     const [priority] = useState({1: 'table-light', 2: 'table-success', 3: 'table-warning', 4: 'table-danger'});
 
     return (
@@ -19,7 +19,7 @@ const Card = ({card, onDragStart, deleteCardById}) => {
 
             <div className='card-buttons'>
                 <Link to={`/edit-card/${card.laneId}/${card.id}`} className='edit-btn'><FontAwesomeIcon icon={faEdit}/></Link>
-                <button className='delete-btn' onClick={() => deleteCardById(card.id)}><FontAwesomeIcon
+                <button className='delete-btn' onClick={() => deleteCard(card.id)}><FontAwesomeIcon
                     icon={faTrashAlt}/></button>
             </div>
         </div>

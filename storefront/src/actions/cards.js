@@ -1,35 +1,40 @@
 import {
-    FETCH_ALL_CARDS,
-    REQUESTED_CARDS,
-    ERROR_CARDS,
-    CHANGE_CARD_LANE,
-    ADD_NEW_CARD,
-    ERROR_NEW_CARD,
-    DELETE_CARD,
-    EDIT_CARD,
-    REQUESTED_EDIT_CARDS,
-    REQUESTED_ALL_CARDS
+    FETCH_ALL_CARDS_REQUEST,
+    FETCH_ALL_CARDS_SUCCESS,
+    FETCH_ALL_CARDS_ERROR,
+    ADD_NEW_CARD_REQUEST,
+    ADD_NEW_CARD_SUCCESS,
+    ADD_NEW_CARD_ERROR,
+    CHANGE_CARD_LANE_SUCCESS,
+    CHANGE_CARD_LANE_ERROR,
+    DELETE_CARD_REQUEST,
+    DELETE_CARD_SUCCESS,
+    DELETE_CARD_ERROR,
+    EDIT_CARD_REQUEST,
+    EDIT_CARD_SUCCESS,
+    EDIT_CARD_ERROR
 } from './constants';
+
 import Services from "../services/services";
 
 const services = new Services();
 
-const fetchingCards = () => {
+const fetchAllCards = () => {
     return (dispatch) => {
         dispatch({
-            type: REQUESTED_ALL_CARDS
+            type: FETCH_ALL_CARDS_REQUEST
         });
 
         services.getAllCards()
             .then((cards) => {
                 dispatch({
-                    type: FETCH_ALL_CARDS,
+                    type: FETCH_ALL_CARDS_SUCCESS,
                     payload: cards
                 })
             })
             .catch((err) => {
                 dispatch({
-                    type: ERROR_CARDS,
+                    type: FETCH_ALL_CARDS_ERROR,
                     payload: err
                 })
             })
@@ -41,18 +46,23 @@ const changeCardLane = (laneId, cardObj) => {
         services.changeCardsLaneId(laneId, cardObj)
             .then(() => {
                 dispatch({
-                    type: CHANGE_CARD_LANE,
+                    type: CHANGE_CARD_LANE_SUCCESS,
                     payload: true
                 });
             })
-            .catch((err) => console.error(err))
+            .catch((err) => {
+                dispatch({
+                    type: CHANGE_CARD_LANE_ERROR,
+                    payload: err
+                })
+            })
     }
 };
 
 const addNewCard = (cardObj) => {
     return (dispatch) => {
         dispatch({
-            type: REQUESTED_CARDS
+            type: ADD_NEW_CARD_REQUEST
         });
 
         services.addNewCard(cardObj)
@@ -61,23 +71,23 @@ const addNewCard = (cardObj) => {
             })
             .then((cards) => {
                 dispatch({
-                    type: ADD_NEW_CARD,
+                    type: ADD_NEW_CARD_SUCCESS,
                     payload: cards
                 })
             })
             .catch((err) => {
                 dispatch({
-                    type: ERROR_NEW_CARD,
+                    type: ADD_NEW_CARD_ERROR,
                     payload: err
                 })
             })
     }
 };
 
-const deleteCardById = (cardObj) => {
+const deleteCard = (cardObj) => {
     return (dispatch) => {
         dispatch({
-            type: REQUESTED_CARDS
+            type: DELETE_CARD_REQUEST
         });
 
         services.deleteCardById(cardObj)
@@ -86,18 +96,23 @@ const deleteCardById = (cardObj) => {
             })
             .then((cards) => {
                 dispatch({
-                    type: DELETE_CARD,
+                    type: DELETE_CARD_SUCCESS,
                     payload: cards
                 })
             })
-            .catch((err) => console.error(err));
+            .catch((err) => {
+                dispatch({
+                    type: DELETE_CARD_ERROR,
+                    payload: err
+                })
+            });
     }
 };
 
-const editCardById = (cardObj) => {
+const editCard = (cardObj) => {
     return (dispatch) => {
         dispatch({
-            type: REQUESTED_EDIT_CARDS
+            type: EDIT_CARD_REQUEST
         });
 
         services.editCardById(cardObj)
@@ -106,18 +121,23 @@ const editCardById = (cardObj) => {
             })
             .then((cards) => {
                 dispatch({
-                    type: EDIT_CARD,
+                    type: EDIT_CARD_SUCCESS,
                     payload: cards
                 })
             })
-            .catch((err) => console.error(err));
+            .catch((err) => {
+                dispatch({
+                    type: EDIT_CARD_ERROR,
+                    payload: err
+                })
+            });
     }
 };
 
 export {
-    fetchingCards,
+    fetchAllCards,
     changeCardLane,
     addNewCard,
-    deleteCardById,
-    editCardById
+    deleteCard,
+    editCard
 }

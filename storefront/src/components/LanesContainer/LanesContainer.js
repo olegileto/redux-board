@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 
-import {fetchingLanes, fetchingCards} from '../../actions';
+import {fetchAllLanes, fetchAllCards} from '../../actions';
 
 import Lane from '../Lane/Lane';
 
@@ -11,12 +11,12 @@ import './LaneContainer.css';
 class LanesContainer extends Component {
 
     componentDidMount() {
-        this.props.fetchingLanes();
-        this.props.fetchingCards();
+        this.props.fetchAllLanes();
+        this.props.fetchAllCards();
     }
 
     handleCardsUpdate = () => {
-        this.props.fetchingCards();
+        this.props.fetchAllCards();
     };
 
     render() {
@@ -26,7 +26,7 @@ class LanesContainer extends Component {
             <Lane
                 key={lane.id}
                 lane={lane}
-                fetchingCards={this.handleCardsUpdate}/>);
+                fetchAllCards={this.handleCardsUpdate}/>);
 
         return (
             <div className='lanes-container'>
@@ -44,8 +44,8 @@ const mapStateToProps = ({lanes: {lanes}}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchingLanes: bindActionCreators(fetchingLanes, dispatch),
-        fetchingCards: bindActionCreators(fetchingCards, dispatch),
+        fetchAllLanes: bindActionCreators(fetchAllLanes, dispatch),
+        fetchAllCards: bindActionCreators(fetchAllCards, dispatch),
     }
 };
 

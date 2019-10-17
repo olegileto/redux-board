@@ -9,11 +9,11 @@ import LanesContainer from "../LanesContainer/LanesContainer";
 import Modal from "../Modal/Modal";
 import EditForm from "../Card/EditForm";
 
-import {addNewCard, editCardById} from "../../actions";
+import {addNewCard, editCard} from "../../actions";
 
 class App extends Component {
     render() {
-        const {addNewCard, editCardById, cards} = this.props;
+        const {addNewCard, editCard, cards} = this.props;
 
         return (
             <BrowserRouter>
@@ -36,7 +36,7 @@ class App extends Component {
                                 return <EditForm
                                     id={parseInt(cardId, 10)}
                                     laneId={parseInt(laneId, 10)}
-                                    editCardById={editCardById}
+                                    editCard={editCard}
                                     card={cardObj[0]}/>
                             })}
                         />
@@ -65,7 +65,7 @@ const mapStateToProps = ({cards: {cards}}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addNewCard: bindActionCreators(addNewCard, dispatch),
-        editCardById: bindActionCreators(editCardById, dispatch)
+        editCard: bindActionCreators(editCard, dispatch)
     }
 };
 

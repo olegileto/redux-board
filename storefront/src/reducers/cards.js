@@ -1,13 +1,18 @@
 import {
-    FETCH_ALL_CARDS,
-    REQUESTED_CARDS,
-    ERROR_CARDS,
-    CHANGE_CARD_LANE,
-    ADD_NEW_CARD,
-    DELETE_CARD,
-    EDIT_CARD,
-    REQUESTED_EDIT_CARDS,
-    REQUESTED_ALL_CARDS
+    FETCH_ALL_CARDS_REQUEST,
+    FETCH_ALL_CARDS_SUCCESS,
+    FETCH_ALL_CARDS_ERROR,
+    ADD_NEW_CARD_REQUEST,
+    ADD_NEW_CARD_SUCCESS,
+    ADD_NEW_CARD_ERROR,
+    CHANGE_CARD_LANE_SUCCESS,
+    CHANGE_CARD_LANE_ERROR,
+    DELETE_CARD_REQUEST,
+    DELETE_CARD_SUCCESS,
+    DELETE_CARD_ERROR,
+    EDIT_CARD_REQUEST,
+    EDIT_CARD_SUCCESS,
+    EDIT_CARD_ERROR,
 } from '../actions/constants';
 
 const initialState = {
@@ -18,35 +23,53 @@ const initialState = {
 };
 
 const cards = (state = initialState, action) => {
+
     const fetchData = {...state, cards: action.payload, isLoading: false, dragEvent: false};
+    const isError = {...state, error: true};
+    const isLoading = {...state, isLoading: true};
 
     switch (action.type) {
-        case FETCH_ALL_CARDS:
+        case FETCH_ALL_CARDS_REQUEST:
+            return isLoading;
+
+        case FETCH_ALL_CARDS_SUCCESS:
             return fetchData;
 
-        case REQUESTED_ALL_CARDS:
-            return {...state, isLoading: true};
+        case FETCH_ALL_CARDS_ERROR:
+            return isError;
 
-        case REQUESTED_CARDS:
-            return {...state, isLoading: true};
+        case ADD_NEW_CARD_REQUEST:
+            return isLoading;
 
-        case REQUESTED_EDIT_CARDS:
-            return {...state, isLoading: true};
+        case ADD_NEW_CARD_SUCCESS:
+            return fetchData;
 
-        case ERROR_CARDS:
-            return {...state, error: true};
+        case ADD_NEW_CARD_ERROR:
+            return isError;
 
-        case CHANGE_CARD_LANE:
+        case DELETE_CARD_REQUEST:
+            return isLoading;
+
+        case DELETE_CARD_SUCCESS:
+            return fetchData;
+
+        case DELETE_CARD_ERROR:
+            return isError;
+
+        case EDIT_CARD_REQUEST:
+            return isLoading;
+
+        case EDIT_CARD_SUCCESS:
+            return fetchData;
+
+        case EDIT_CARD_ERROR:
+            return isError;
+
+        case CHANGE_CARD_LANE_SUCCESS:
             return {...state, dragEvent: action.payload};
 
-        case ADD_NEW_CARD:
-            return fetchData;
-
-        case DELETE_CARD:
-            return fetchData;
-
-        case EDIT_CARD:
-            return fetchData;
+        case CHANGE_CARD_LANE_ERROR:
+            return isError;
 
         default:
             return state;

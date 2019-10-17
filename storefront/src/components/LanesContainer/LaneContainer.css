@@ -34,13 +34,19 @@ h4.lane-title {
     border: none;
     outline: none;
     transition: opacity .3s;
+    color: #212121;
 }
 
-.lane .lane-header button {
+.lane a {
+    color: #212121;
+}
+
+.lane .lane-header a {
     color: #fff;
 }
 
-.lane button:hover {
+.lane button:hover,
+.lane a:hover {
     opacity: .7;
 }
 

@@ -1,24 +1,29 @@
-import {FETCHING_LANES, REQUESTED_LANES, ERROR_LANES} from './constants';
+import {
+    FETCH_ALL_LANES_REQUEST,
+    FETCH_ALL_LANES_SUCCESS,
+    FETCH_ALL_LANES_ERROR
+} from './constants';
+
 import Services from "../services/services";
 
 const services = new Services();
 
-const fetchingLanes = () => {
+const fetchAllLanes = () => {
     return (dispatch) => {
         dispatch({
-            type: REQUESTED_LANES,
+            type: FETCH_ALL_LANES_REQUEST,
         });
 
         services.getAllLanes()
             .then((lanes) => {
                 dispatch({
-                    type: FETCHING_LANES,
+                    type: FETCH_ALL_LANES_SUCCESS,
                     payload: lanes
                 })
             })
             .catch((err) => {
                 dispatch({
-                    type: ERROR_LANES,
+                    type: FETCH_ALL_LANES_ERROR,
                     payload: err
                 })
             })
@@ -26,5 +31,5 @@ const fetchingLanes = () => {
 };
 
 export {
-    fetchingLanes
+    fetchAllLanes
 }

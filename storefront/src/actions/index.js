@@ -1,17 +1,17 @@
-import {fetchingLanes} from "./lanes";
+import {fetchAllLanes} from "./lanes";
 import {
-    fetchingCards,
+    fetchAllCards,
     changeCardLane,
     addNewCard,
-    deleteCardById,
-    editCardById
+    deleteCard,
+    editCard
 } from './cards';
 
 export {
-    fetchingLanes,
-    fetchingCards,
+    fetchAllLanes,
+    fetchAllCards,
     changeCardLane,
     addNewCard,
-    deleteCardById,
-    editCardById
+    deleteCard,
+    editCard
 }
