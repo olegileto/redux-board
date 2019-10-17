@@ -13,6 +13,9 @@ import {
     EDIT_CARD_REQUEST,
     EDIT_CARD_SUCCESS,
     EDIT_CARD_ERROR,
+    FILTER_CARDS_REQUEST,
+    FILTER_CARDS_SUCCESS,
+    FILTER_CARDS_ERROR
 } from '../actions/constants';
 
 const initialState = {
@@ -70,6 +73,15 @@ const cards = (state = initialState, action) => {
             return {...state, dragEvent: action.payload.dragEvent, dropZoneId: action.payload.dropZoneId};
 
         case CHANGE_CARD_LANE_ERROR:
+            return isError;
+
+        case FILTER_CARDS_REQUEST:
+            return isLoading;
+
+        case FILTER_CARDS_SUCCESS:
+            return fetchData;
+
+        case FILTER_CARDS_ERROR:
             return isError;
 
         default:

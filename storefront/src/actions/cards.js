@@ -12,7 +12,10 @@ import {
     DELETE_CARD_ERROR,
     EDIT_CARD_REQUEST,
     EDIT_CARD_SUCCESS,
-    EDIT_CARD_ERROR
+    EDIT_CARD_ERROR,
+    FILTER_CARDS_REQUEST,
+    FILTER_CARDS_SUCCESS,
+    FILTER_CARDS_ERROR
 } from './constants';
 
 import Services from "../services/services";
@@ -137,10 +140,35 @@ const editCard = (cardObj) => {
     }
 };
 
+const filterCards = (cardObj) => {
+    console.log(cardObj);
+    return (dispatch) => {
+        dispatch({
+            type: FILTER_CARDS_REQUEST
+        });
+
+        services.filterCardsByTitle(cardObj)
+            .then((cards) => {
+                dispatch({
+                    type: FILTER_CARDS_SUCCESS,
+                    payload: cards
+                })
+            })
+
+            .catch((err) => {
+                dispatch({
+                    type: FILTER_CARDS_ERROR,
+                    payload: err
+                })
+            });
+    }
+};
+
 export {
     fetchAllCards,
     changeCardLane,
     addNewCard,
     deleteCard,
-    editCard
+    editCard,
+    filterCards
 }

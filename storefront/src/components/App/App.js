@@ -10,16 +10,16 @@ import Modal from "../Modal/Modal";
 import EditForm from "../Card/EditForm";
 import FilterPanel from "../FilterPanel/FilterPanel";
 
-import {addNewCard, editCard} from "../../actions";
+import {addNewCard, editCard, filterCards} from "../../actions";
 
 class App extends Component {
     render() {
-        const {addNewCard, editCard, cards} = this.props;
+        const {addNewCard, editCard, filterCards, cards} = this.props;
 
         return (
             <BrowserRouter>
                 <div className="app">
-                    <FilterPanel/>
+                    <FilterPanel filterCards={filterCards}/>
 
                     <Switch>
                         <Route
@@ -68,7 +68,8 @@ const mapStateToProps = ({cards: {cards}}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addNewCard: bindActionCreators(addNewCard, dispatch),
-        editCard: bindActionCreators(editCard, dispatch)
+        editCard: bindActionCreators(editCard, dispatch),
+        filterCards: bindActionCreators(filterCards, dispatch)
     }
 };
 

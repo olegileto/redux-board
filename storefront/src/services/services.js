@@ -78,8 +78,17 @@ export default class Services {
             .then((res) => {
                 return res.json();
             })
-
             .catch((err) => console.error(err))
-    }
+    };
+
+    filterCardsByTitle = (cardObj) => {
+      return fetch(`${this._apiBase}/cards?title=${cardObj}`, {
+          method: 'GET'
+      })
+          .then((res) => {
+              return res.json()
+          })
+          .catch((err) => console.error(err))
+    };
 }
 

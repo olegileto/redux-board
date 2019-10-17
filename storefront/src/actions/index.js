@@ -4,7 +4,8 @@ import {
     changeCardLane,
     addNewCard,
     deleteCard,
-    editCard
+    editCard,
+    filterCards
 } from './cards';
 
 export {
@@ -13,5 +14,6 @@ export {
     changeCardLane,
     addNewCard,
     deleteCard,
-    editCard
+    editCard,
+    filterCards
 }
