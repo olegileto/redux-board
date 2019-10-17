@@ -140,14 +140,13 @@ const editCard = (cardObj) => {
     }
 };
 
-const filterCards = (cardObj) => {
-    console.log(cardObj);
+const filterCards = (cardTitle) => {
     return (dispatch) => {
         dispatch({
             type: FILTER_CARDS_REQUEST
         });
 
-        services.filterCardsByTitle(cardObj)
+        services.filterCardsByTitle(cardTitle)
             .then((cards) => {
                 dispatch({
                     type: FILTER_CARDS_SUCCESS,

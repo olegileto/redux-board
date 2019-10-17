@@ -8,7 +8,6 @@ import './FilterPanel.css';
 const FilterPanel = ({filterCards}) => {
     const [title, setTitle] = useState('');
 
-
     return (
         <div className='filter-panel'>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -28,7 +27,9 @@ const FilterPanel = ({filterCards}) => {
                                 console.log(title);
                                 setTitle(e.target.value)
                             }}/>
-                        <span className="btn btn-secondary my-2 my-sm-0" onClick={() => {filterCards(title)}}>Filter</span>
+                        <span className="btn btn-secondary my-2 my-sm-0" onClick={() => {
+                            filterCards(title)
+                        }}>Filter</span>
                     </form>
                 </div>
             </nav>
