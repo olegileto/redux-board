@@ -19,12 +19,13 @@ const initialState = {
     cards: [],
     isLoading: false,
     error: false,
-    dragEvent: false
+    dragEvent: false,
+    dropZoneId: null
 };
 
 const cards = (state = initialState, action) => {
 
-    const fetchData = {...state, cards: action.payload, isLoading: false, dragEvent: false};
+    const fetchData = {...state, cards: action.payload, isLoading: false, dragEvent: false, dropZoneId: null};
     const isError = {...state, error: true};
     const isLoading = {...state, isLoading: true};
 
@@ -66,7 +67,7 @@ const cards = (state = initialState, action) => {
             return isError;
 
         case CHANGE_CARD_LANE_SUCCESS:
-            return {...state, dragEvent: action.payload};
+            return {...state, dragEvent: action.payload.dragEvent, dropZoneId: action.payload.dropZoneId};
 
         case CHANGE_CARD_LANE_ERROR:
             return isError;

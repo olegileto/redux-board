@@ -12,8 +12,10 @@ import {changeCardLane, deleteCard} from '../../actions/index';
 class Lane extends Component {
 
     componentDidUpdate(prevProps) {
-        if (this.props.dragEvent !== prevProps.dragEvent) {
-            this.props.fetchAllCards();
+        const {lane:{id}, dragEvent, dropZoneId, fetchAllCards} = this.props;
+
+        if (dragEvent !== prevProps.dragEvent && parseInt(dropZoneId, 10) === id) {
+            fetchAllCards();
         }
     }
 
@@ -69,10 +71,11 @@ class Lane extends Component {
     }
 }
 
-const mapStateToProps = ({cards: {cards, dragEvent}}) => {
+const mapStateToProps = ({cards: {cards, dragEvent, dropZoneId}}) => {
     return {
         cards,
-        dragEvent
+        dragEvent,
+        dropZoneId
     }
 };
 

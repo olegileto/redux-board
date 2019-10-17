@@ -1,0 +1,27 @@
+.filter-panel {
+    width: 97%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+.filter-panel form {
+    width: 100%;
+}
+
+.filter-input {
+    width: 95% !important;
+}
+
+.filter-panel h1 {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.re-load-btn {
+    margin-right: 10px;
+}

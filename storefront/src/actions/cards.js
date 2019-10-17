@@ -47,7 +47,10 @@ const changeCardLane = (laneId, cardObj) => {
             .then(() => {
                 dispatch({
                     type: CHANGE_CARD_LANE_SUCCESS,
-                    payload: true
+                    payload: {
+                        dropZoneId: laneId,
+                        dragEvent: true
+                    }
                 });
             })
             .catch((err) => {

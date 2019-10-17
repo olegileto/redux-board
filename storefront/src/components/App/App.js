@@ -8,6 +8,7 @@ import './App.css';
 import LanesContainer from "../LanesContainer/LanesContainer";
 import Modal from "../Modal/Modal";
 import EditForm from "../Card/EditForm";
+import FilterPanel from "../FilterPanel/FilterPanel";
 
 import {addNewCard, editCard} from "../../actions";
 
@@ -18,6 +19,8 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="app">
+                    <FilterPanel/>
+
                     <Switch>
                         <Route
                             path='/'
