@@ -24,7 +24,6 @@ const FilterPanel = ({filterCards}) => {
                             type="text" placeholder="Filter"
                             value={title}
                             onChange={(e) => {
-                                console.log(title);
                                 setTitle(e.target.value)
                             }}/>
                         <span className="btn btn-secondary my-2 my-sm-0" onClick={() => {
