@@ -26,8 +26,6 @@ class App extends Component {
                             path='/'
                             render={() => <LanesContainer/>}
                         />
-
-
                     </Switch>
 
                     <Route

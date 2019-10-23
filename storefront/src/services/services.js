@@ -82,7 +82,7 @@ export default class Services {
     };
 
     filterCardsByTitle = (cardTitle) => {
-      return fetch(`${this._apiBase}/cards?title=${cardTitle}`, {
+      return fetch(`${this._apiBase}/cards?title_like=${cardTitle}`, {
           method: 'GET'
       })
           .then((res) => {
